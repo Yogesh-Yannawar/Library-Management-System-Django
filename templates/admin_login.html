@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}Admin Login{% endblock %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh; padding: 1rem;">
+    <div class="card shadow-lg rounded-4 p-4 w-100" style="max-width: 400px;">
+        
+        <h2 class="text-center mb-3 text-warning">Admin Login</h2>
+        <p class="text-muted text-center small">
+            <b>Note:</b> Only the admin can login from here. Students are not allowed.
+        </p>
+
+        <form method="POST" class="mt-3">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="username" class="fw-bold">Username</label>
+                <input type="text" name="username" class="form-control rounded-pill mt-1" placeholder="Enter username" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="fw-bold">Password</label>
+                <input type="password" name="password" class="form-control rounded-pill mt-1" placeholder="Enter password" required>
+            </div>
+            <button class="btn btn-warning btn-lg w-100 rounded-pill">Login</button>
+        </form>
+
+        {% if messages %}
+        <div class="mt-3">
+            {% for msg in messages %}
+                <div class="alert 
+                            {% if msg.tags == 'success' %}alert-success
+                            {% elif msg.tags == 'error' %}alert-danger
+                            {% else %}alert-info{% endif %}
+                            text-center mb-2 rounded-pill shadow-sm small">
+                    {{ msg }}
+                </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+    </div>
+</div>
+
+<!-- Optional: Small tweak for very small screens -->
+<style>
+    @media (max-width: 400px) {
+        .card {
+            padding: 1rem !important;
+        }
+        .btn-lg {
+            font-size: 1rem;
+        }
+        .form-control {
+            font-size: 0.9rem;
+        }
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}Edit Profile Page{% endblock %}
+
+{% block content %}
+{% include 'alert_msg.html' %}
+
+<div class="container mt-4">
+   <div class="card shadow-sm p-4 rounded-4 mx-auto" style="max-width: 800px;">
+       <h2 class="text-center mb-4">Edit Profile</h2>
+       <form method="POST">
+        {% csrf_token %}
+        
+        <div class="row g-3">
+            <div class="col-12 col-md-6">
+                <label class="fw-bold">Email</label>
+                <input type="email" class="form-control mt-1" name="email" value="{{user.email}}" required>
+            </div>
+            <div class="col-12 col-md-6">
+                <label class="fw-bold">Mobile Number</label>
+                <input type="text" class="form-control mt-1" name="phone" value="{{user.student.phone}}" required>
+            </div>
+        </div>
+
+        <div class="row g-3 mt-3">
+            <div class="col-12 col-md-6">
+                <label class="fw-bold">Branch Name</label>
+                <input type="text" class="form-control mt-1" name="branch" value="{{user.student.branch}}" required>
+            </div>
+            <div class="col-12 col-md-6">
+                <label class="fw-bold">Class Name</label>
+                <input type="text" class="form-control mt-1" name="classroom" value="{{user.student.classroom}}" required>
+            </div>
+        </div>
+
+        <div class="row g-3 mt-3">
+            <div class="col-12 col-md-6">
+                <label class="fw-bold">Roll Number</label>
+                <input type="text" class="form-control mt-1" name="roll_no" value="{{user.student.roll_no}}" required>
+            </div>
+        </div>
+
+        <div class="mt-4 text-center">
+            <button class="btn btn-primary btn-lg w-100 w-md-auto px-4">Update Profile</button>
+        </div>
+       </form>
+
+       {% if alert %}
+       <div class="alert alert-success text-center mt-4 rounded-3">
+           Profile updated successfully
+       </div>
+       {% endif %}
+   </div>
+</div>
+
+{% endblock %}

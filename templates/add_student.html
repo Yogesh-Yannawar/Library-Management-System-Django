@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Add Student</h1>
+    
+    <form method="POST" enctype="multipart/form-data" class="mx-auto" style="max-width: 600px;">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label class="form-label fw-bold">Username</label>
+            <select name="user" id="user" class="form-select" required>
+                {% for u in users %}
+                <option value="{{ u.id }}">{{ u.username }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label fw-bold">Class</label>
+            <input type="text" class="form-control" name="classroom" placeholder="Enter student class" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label fw-bold">Branch</label>
+            <input type="text" class="form-control" name="branch" placeholder="Enter student branch" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label fw-bold">Roll Number</label>
+            <input type="text" class="form-control" name="roll_no" placeholder="Enter student Roll number">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label fw-bold">Phone Number</label>
+            <input type="text" class="form-control" name="phone" placeholder="Enter student phone number">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label fw-bold">Student Image</label>
+            <input type="file" class="form-control" name="image">
+        </div>
+
+        <div class="d-flex flex-column flex-sm-row gap-2 mt-4">
+            <button class="btn btn-outline-primary w-100 w-sm-auto">Add Student</button>
+            <a href="{% url 'view_student' %}" class="btn btn-danger w-100 w-sm-auto">Cancel</a>
+        </div>
+
+    </form>
+</div>
+
+{% endblock %}

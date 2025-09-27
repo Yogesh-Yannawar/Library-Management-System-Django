@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Home | Library{% endblock %}
+
+{% block styles %}
+<style>
+    body {
+        min-height: 100vh;
+        background: url("{% static 'images/lib2.jpeg' %}") no-repeat center center fixed;
+        background-size: cover;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .overlay {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        padding: 30px 20px;
+        border-radius: 20px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        color: #ffffff;
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    .hero-text {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #ffc107;
+        text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.7);
+    }
+
+    .marquee {
+        background: rgba(13, 110, 253, 0.85);
+        color: #fff;
+        font-size: 1rem;
+        font-weight: 500;
+        padding: 8px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+
+    .btn-outline-dark {
+        background-color: rgba(255, 255, 255, 0.15);
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        transition: 0.3s ease;
+        width: 100%;
+    }
+
+    .btn-outline-dark:hover {
+        background-color: #fff;
+        color: #0d6efd;
+        transform: scale(1.05);
+    }
+
+    .feature-card {
+        background: rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(6px);
+        border-radius: 15px;
+        padding: 20px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        color: white;
+        text-align: center;
+        height: 100%;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .feature-card i {
+        font-size: 2rem;
+        margin-bottom: 12px;
+        color: #ffc107;
+    }
+
+    @media (max-width: 767px) {
+        .hero-text {
+            font-size: 1.6rem;
+        }
+        .marquee {
+            font-size: 0.9rem;
+        }
+        .overlay {
+            padding: 20px 10px;
+        }
+        .feature-card {
+            padding: 15px;
+        }
+        .feature-card h4 {
+            font-size: 1.1rem;
+        }
+        .feature-card p {
+            font-size: 0.9rem;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="overlay">
+        <!-- Announcement -->
+        <marquee class="marquee" behavior="scroll" direction="left" scrollamount="5">
+            📢 Welcome to Library Management System | Register as a student and issue books through the admin.
+            Return the book within 14 days or pay a fine of ₹5/day after the due date.
+        </marquee>
+
+        <!-- Hero Section -->
+        <div class="hero-text">📚 Welcome to Library Management System</div>
+        <p class="fs-6 mt-3 text-white">
+            Manage students, issue and return books, and track fines with ease.  
+            Your digital library assistant, available 24/7.
+        </p>
+        <a href="{% url 'register' %}" class="btn btn-primary btn-lg mt-2 mb-4">
+            <i class="bi bi-person-plus"></i> Register as Student
+        </a>
+
+        <!-- Quick Access Cards -->
+        <div class="row g-3">
+            <div class="col-12 col-md-4">
+                <div class="feature-card">
+                    <i class="bi bi-shield-lock-fill"></i>
+                    <h4>Admin Access</h4>
+                    <p>Admins can manage students, books, and issued records easily.</p>
+                    <a href="{% url 'admin_login' %}" class="btn btn-outline-dark mt-2">Admin Login</a>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="feature-card">
+                    <i class="bi bi-person-circle"></i>
+                    <h4>Student Access</h4>
+                    <p>Students can login, check issued books, and track return dates.</p>
+                    <a href="{% url 'stud_login' %}" class="btn btn-outline-dark mt-2">Student Login</a>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="feature-card">
+                    <i class="bi bi-book-half"></i>
+                    <h4>Explore Library</h4>
+                    <p>Browse available books, authors, and categories in one place.</p>
+                    <a href="{% url 'view_books' %}" class="btn btn-outline-dark mt-2">View Books</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

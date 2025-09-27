@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Logged Out{% endblock %}
+
+{% block content %}
+<div class="container d-flex align-items-center justify-content-center" style="min-height: 80vh;">
+    <div class="card shadow-lg border-0 text-center p-4 p-md-5 rounded-4" style="max-width: 450px; width: 90%;">
+        <div class="mb-3 mb-md-4">
+            <i class="bi bi-box-arrow-right text-danger" style="font-size: 3rem; @media(min-width:768px){font-size:4rem;}"></i>
+        </div>
+        <h2 class="fw-bold mb-2 mb-md-3 fs-4 fs-md-2">You’ve been logged out</h2>
+        <p class="text-muted mb-3 mb-md-4 fs-6 fs-md-5">
+            Thank you for using our system. You can safely close this window or log in again.
+        </p>
+        <div class="d-grid gap-2 d-md-flex justify-content-center">
+            <a href="{% url 'stud_login' %}" class="btn btn-primary px-3 px-md-4 rounded-pill">
+                🔑 Login Again
+            </a>
+            <a href="/" class="btn btn-outline-secondary px-3 px-md-4 rounded-pill">
+                🏠 Go to Home
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

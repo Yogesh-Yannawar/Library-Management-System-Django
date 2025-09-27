@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container my-5">
+    <h1 class="text-center mb-4">UPDATE STUDENT</h1>
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <!-- Username -->
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Username</label>
+                    <select name="user" id="user" class="form-select" required>
+                        {% for u in users %}
+                            <option value="{{ u.id }}" {% if stud.user.id == u.id %}selected{% endif %}>
+                                {{ u.username }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <!-- Class -->
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Class</label>
+                    <input type="text" class="form-control" name="classroom" placeholder="Enter student class"
+                           value="{{ stud.classroom }}" required>
+                </div>
+
+                <!-- Branch Number -->
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Branch Number</label>
+                    <input type="text" class="form-control" name="branch" placeholder="Enter Student branch"
+                           value="{{ stud.branch }}" required>
+                </div>
+
+                <!-- Roll Number -->
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Roll Number</label>
+                    <input type="text" class="form-control" name="roll_no" placeholder="Enter student Roll number"
+                           value="{{ stud.roll_no }}">
+                </div>
+
+                <!-- Phone Number -->
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Phone Number</label>
+                    <input type="text" class="form-control" name="phone" placeholder="Enter student phone number"
+                           value="{{ stud.phone }}">
+                </div>
+
+                <!-- Student Image -->
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Student Image</label>
+                    <input type="file" class="form-control" name="image">
+                </div>
+
+                <!-- Submit Button -->
+                <div class="d-grid mt-4">
+                    <button type="submit" class="btn btn-outline-primary btn-lg rounded-pill">
+                        Update Student
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
