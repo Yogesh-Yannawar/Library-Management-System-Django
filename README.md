@@ -62,3 +62,23 @@ http://127.0.0.1:8000/
 ```
 ---
 ## 📸 Screenshots
+
+## Home Page
+![Home Page](https://raw.githubusercontent.com/Yogesh-Yannawar/Library-Management-System-Django/main/static/screenshots/Screenshot%202025-09-28%20002540.png)
+
+## Login Page
+![Login Page](https://raw.githubusercontent.com/Yogesh-Yannawar/Library-Management-System-Django/main/static/screenshots/Screenshot%202025-09-28%20002611.png)
+
+## Admin Dashboard
+![Admin Dashboard](https://raw.githubusercontent.com/Yogesh-Yannawar/Library-Management-System-Django/main/static/screenshots/Screenshot%202025-09-28%20002721.png)
+
+
+----
+
+## 🛠️ Technologies Used
+
+- Python 3.x
+- Django 3.x
+- MySql (database)
+-HTML, CSS, JavaScript
+-Bootstrap 5
