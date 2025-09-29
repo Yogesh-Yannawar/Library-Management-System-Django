@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Library',
     'widget_tweaks',
+    'django_seed',
 ]
 
 MIDDLEWARE = [
@@ -133,3 +134,4 @@ STATICFILES_DIRS = [STATIC_DIR]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGOUT_REDIRECT_URL = '/logout_view'
+

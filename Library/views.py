@@ -113,7 +113,7 @@ def issue_book(request):
 
 @login_required(login_url='admin_login')
 def view_issued_book(request):
-    issued_books = IssuedBook.objects.select_related('student', 'book').all()  # fetch related objects in one query
+    issued_books = IssuedBook.objects.select_related('student', 'book').all().order_by('-issued_date')
 
     details = []
     for ib in issued_books:
@@ -127,7 +127,12 @@ def view_issued_book(request):
             'fine': ib.fine_amount(),
             'id': ib.id,  # for delete link
         })
-    return render(request, 'view_issued_book.html', {'details': details})
+
+    paginator = Paginator(details, 5)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, 'view_issued_book.html', {'page_obj': page_obj})
 
 @login_required(login_url='admin_login')
 def delete_issued_book(request,id):
